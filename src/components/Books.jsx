@@ -1,0 +1,30 @@
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import BookCard from "./BookCard";
+import Loading from "./Loading";
+
+const Books = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    axios
+      .get(
+        "https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM" +
+          "&maxResults=40"
+      )
+      .then((res) => {
+        setData(res.data.items);
+        setLoading(true);
+      });
+  }, []);
+
+  return (
+    <div className=" bg-slate-100 w-full">
+      <div className="flex flex-wrap">
+        {loading == false ? <Loading /> : <BookCard books={data} />}
+      </div>
+    </div>
+  );
+};
+
+export default Books;
