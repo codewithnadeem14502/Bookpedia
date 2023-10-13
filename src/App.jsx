@@ -12,12 +12,14 @@ import BestSelling from "./pages/BestSelling";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import RootLayout from "./layouts/RootLayout";
+import BookDetails from "./pages/BookDetails";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Homepage />} />
+        <Route path=":id" element={<BookDetails />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
