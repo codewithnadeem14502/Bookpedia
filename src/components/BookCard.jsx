@@ -1,5 +1,5 @@
 const BookCard = ({ books }) => {
-  console.log(books);
+  // console.log(books);
   return (
     <>
       {books.map((item) => {
@@ -11,8 +11,8 @@ const BookCard = ({ books }) => {
         // console.log(amount);
         if (bookimage != undefined && amount != undefined) {
           return (
-            <div className="p-3 mb-5">
-              <div className="bg-red-400 w-[250px] h-[400px] rounded-xl ">
+            <div className="p-5 mb-5 mr-1 ml-2">
+              <div className="bg-red-400 w-[250px] h-[400px] rounded-xl  ">
                 <img
                   className="w-[250px] h-[250px] rounded-xl"
                   src={bookimage}

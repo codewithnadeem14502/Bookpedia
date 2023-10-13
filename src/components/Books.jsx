@@ -19,8 +19,8 @@ const Books = () => {
   }, []);
 
   return (
-    <div className=" bg-slate-100 w-full">
-      <div className="flex flex-wrap">
+    <div className=" bg-slate-100 w-full mt-5">
+      <div className="flex flex-wrap justify-center">
         {loading == false ? <Loading /> : <BookCard books={data} />}
       </div>
     </div>
