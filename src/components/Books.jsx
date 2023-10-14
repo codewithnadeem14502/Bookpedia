@@ -10,7 +10,7 @@ const Books = ({ search }) => {
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q='+${search}+'&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM` +
+        "https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM" +
           "&maxResults=40"
       )
       .then((res) => {
