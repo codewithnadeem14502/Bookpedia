@@ -1,30 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "./BookCard";
-import Loading from "./Loading";
-import { Link } from "react-router-dom";
+import Intro from "./Intro";
 
-const Books = ({ search }) => {
+import { FcSearch } from "react-icons/fc";
+const Books = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = () => {
+    // useEffect(() => {
     axios
       .get(
-        "https://www.googleapis.com/books/v1/volumes?q=react&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM" +
-          "&maxResults=40"
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM` +
+          `&maxResults=40`
       )
       .then((res) => {
         setData(res.data.items);
         setLoading(true);
       });
-  }, []);
-  // console.log(search);
+    // }, []);
+  };
+
+  const handleInputChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
-    <div className=" bg-slate-100 w-full mt-5">
-      <div className="flex flex-wrap justify-center">
-        {loading == false ? <Loading /> : <BookCard books={data} />}
+    <>
+      <div className="bg-slate-50 mt-5 flex justify-center h-[60px]">
+        <div className="flex w-[30%] m-1 justify-center">
+          <input
+            className="bg-gray-300 font-semibold text-xl w-[550px] rounded-tl-xl rounded-bl-xl  pl-5 focus:outline-none"
+            type="text"
+            placeholder="Search here..."
+            value={search}
+            onChange={handleInputChange}
+          />
+          <div className="items-center">
+            <FcSearch
+              className="w-[35px] h-[52px]  bg-gray-300 rounded-r-xl"
+              onClick={handleSearch}
+              style={{ cursor: "pointer" }}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+      <div className=" bg-slate-100 w-full mt-5">
+        <div className="flex flex-wrap justify-center">
+          {loading == false ? <Intro /> : <BookCard books={data} />}
+        </div>
+      </div>
+    </>
   );
 };
 

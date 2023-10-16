@@ -1,11 +1,9 @@
-import SearchBar from "../components/SearchBar";
-
-import { useState } from "react";
+import Books from "../components/Books";
 
 const Homepage = () => {
   return (
     <div>
-      <SearchBar />
+      <Books />
     </div>
   );
 };

@@ -2,8 +2,9 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex h-screen justify-center items-center w-full">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-8 border-red-900"></div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="w-24 h-24 border-t-8 border-blue-500 border-solid rounded-full animate-spin"></div>
+      <p className="mt-4 text-xl font-semibold text-gray-700">Loading...</p>
     </div>
   );
 };
