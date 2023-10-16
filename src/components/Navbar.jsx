@@ -3,7 +3,8 @@ import { VscAccount } from "react-icons/vsc";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/bookpedia-logos.jpeg";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
@@ -12,16 +13,12 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="flex justify-between  h-[70px]">
-        <div className=" mr-5">
-          <img
-            className="w-[120px] h-[50px]"
-            src="https://d2g9wbak88g7ch.cloudfront.net/staticimages/logo-new.png"
-            alt="logo"
-          />
+      <div className="flex justify-between   h-[95px]">
+        <div className=" ">
+          <img className="w-[150px] h-[95px]" src={logo} alt="logo" />
         </div>
-        <div className="bg-red-500 w-full hidden md:block">
-          <ul className="text-white flex justify-evenly mt-5">
+        <div className="bg-blue-500 w-full hidden md:block items-center ">
+          <ul className="text-white flex justify-evenly mt-8">
             <li className="font-bold text-xl  hover:text-yellow-400">
               <NavLink to="/" className="focus:text-yellow-400">
                 Home
@@ -43,11 +40,11 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="bg-yellow-300 md:flex md:justify-evenly w-[15%] pt-5  hidden ">
-          <NavLink to="profile" className="focus:text-yellow-400">
-            <VscAccount className="w-[30px] h-[40px]  hover:text-red-500" />
+          <NavLink to="profile" className="focus:text-blue-400">
+            <VscAccount className="w-[30px] h-[40px]  hover:text-blue-400" />
           </NavLink>
-          <NavLink to="cart" className="focus:text-yellow-400">
-            <BiSolidCart className="w-[30px] h-[40px]  hover:text-green-500" />
+          <NavLink to="cart" className="focus:text-blue-400">
+            <BiSolidCart className="w-[30px] h-[40px]  hover:text-blue-400" />
           </NavLink>
         </div>
         <div className="md:hidden ">

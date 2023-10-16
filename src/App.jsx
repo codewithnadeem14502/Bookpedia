@@ -13,6 +13,7 @@ import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import RootLayout from "./layouts/RootLayout";
 import BookDetails from "./pages/BookDetails";
+import BestSellingpage from "./components/BestSellingpage";
 
 function App() {
   const router = createBrowserRouter(
@@ -23,7 +24,7 @@ function App() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/best-selling" element={<BestSelling />} />
+        <Route path="/best-selling" element={<BestSellingpage />} />
         <Route path="/about-us" element={<About />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
