@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
+
 const BookCard = ({ books }) => {
-  // console.log(books);
   return (
     <>
       {books.map((item) => {
@@ -11,7 +11,6 @@ const BookCard = ({ books }) => {
         let indx = item.id;
         let title = item.volumeInfo.title;
         let amount = item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
-
         if (bookimage != undefined && amount != undefined) {
           // console.log(indx);
           return (
@@ -30,6 +29,7 @@ const BookCard = ({ books }) => {
                     <h1 className="font-medium text-lg text-white">{title}</h1>
                     <div className="flex bg-black rounded-xl mt-3 p-2 justify-start items-center text-center content-center ">
                       <FaRupeeSign className="text-green-500" />
+
                       <h2 className="font-bold text-sm mt-2 text-yellow-500 ml-2">
                         {amount}
                       </h2>

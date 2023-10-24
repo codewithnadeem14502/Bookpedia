@@ -14,12 +14,15 @@ import PageNotFound from "./pages/PageNotFound";
 import RootLayout from "./layouts/RootLayout";
 import BookDetails from "./pages/BookDetails";
 import BestSellingpage from "./components/BestSellingpage";
+import FavouriteBook from "./components/FavouriteBook";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Homepage />} />
+
+        <Route path="FavouriteBook" element={<FavouriteBook />} />
         <Route path=":id" element={<BookDetails />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/profile" element={<Profile />} />

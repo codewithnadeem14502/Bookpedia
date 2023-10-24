@@ -1,11 +1,8 @@
 import Books from "../components/Books";
+import { FavouriteProvider } from "../context/Favourite";
 
 const Homepage = () => {
-  return (
-    <div>
-      <Books />
-    </div>
-  );
+  return <Books />;
 };
 
 export default Homepage;

@@ -4,11 +4,13 @@ import BookCard from "./BookCard";
 import Intro from "./Intro";
 
 import { FcSearch } from "react-icons/fc";
+import FavouriteBook from "./FavouriteBook";
+import { Link } from "react-router-dom";
 const Books = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
-
+  const [favourite, setFavourite] = useState(false);
   const handleSearch = () => {
     // useEffect(() => {
     axios
@@ -26,7 +28,14 @@ const Books = () => {
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
-
+  const handlefavourite = () => {
+    {
+      favourite == true ? setFavourite(false) : setFavourite(true);
+    }
+  };
+  const h1ClassName = favourite
+    ? "text-xl font-bold p-5 m-5 bg-green-500 rounded-lg hover:bg-green-500"
+    : "text-xl font-bold p-5 m-5 bg-gray-500 rounded-lg hover:bg-green-500";
   return (
     <>
       <div className="bg-slate-50 mt-5 flex justify-center h-[60px]">
@@ -46,6 +55,14 @@ const Books = () => {
             />
           </div>
         </div>
+      </div>
+      <div
+        className="flex justify-center mt-10 cursor-pointer "
+        onClick={handlefavourite}
+      >
+        <Link to="/FavouriteBook ">
+          <h1 className={h1ClassName}>Favourite book</h1>
+        </Link>
       </div>
       <div className=" bg-slate-100 w-full mt-5">
         <div className="flex flex-wrap justify-center">

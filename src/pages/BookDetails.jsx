@@ -4,7 +4,11 @@ import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import BackButton from "../components/BackButton";
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+
 const BookDetails = () => {
+  const [bookvalue, setBookvalue] = useState(0);
+  const [like, setLike] = useState(true);
   const { id } = useParams();
   const [details, setDetails] = useState(null); // Initialize as null
   const [loading, setLoading] = useState(true);
@@ -43,6 +47,12 @@ const BookDetails = () => {
     const publishedDate = details.volumeInfo.publishedDate;
     const description = details.volumeInfo.description;
 
+    const handleLike = () => {
+      if (like == true) {
+        setLike(false);
+      } else setLike(true);
+    };
+
     return (
       <div key={bookid} className="">
         <div className="bg-slate-200  w-full h-[auto] rounded-xl  flex justify-between flex-col lg:flex-row-reverse">
@@ -52,15 +62,26 @@ const BookDetails = () => {
               src={bookimage}
               alt="bookimage"
             />
-
-            <h2 className="font-bold text-xl ml-12 mb-5 md:m-5">
-              &#8377;{amount}
-            </h2>
-
+            <div className="flex ">
+              <h2 className="font-bold text-xl ml-12 mb-5 md:m-5">
+                &#8377;{amount}
+              </h2>
+              <button
+                onClick={handleLike}
+                className=" font-bold text-lg rounded-lg"
+              >
+                {like == true ? (
+                  <AiOutlineHeart className="w-[30px] h-[30px] text-red-500" />
+                ) : (
+                  <AiFillHeart className="w-[30px] h-[30px] text-red-500" />
+                )}
+              </button>
+            </div>
             <span className="p-5 m-5 bg-green-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
               <a href={infoLink} target="_blank">
                 Buy Now
               </a>
+
               {/* <BsFillCartPlusFill className="w-[40px] h-[40px]" /> */}
             </span>
           </div>
@@ -79,6 +100,7 @@ const BookDetails = () => {
             <p className="mt-4 font-Poppins font-medium text-start">
               {description}
             </p>
+
             <BackButton />
           </div>
         </div>
