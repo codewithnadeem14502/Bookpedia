@@ -14,11 +14,8 @@ const BookCard = ({ books }) => {
         if (bookimage != undefined && amount != undefined) {
           // console.log(indx);
           return (
-            <Link to={indx.toString()}>
-              <div
-                key={indx}
-                className="p-5 mb-5 mr-1 ml-2 group relative transform transition-transform duration-300 hover:scale-105 "
-              >
+            <Link to={indx.toString()} key={indx}>
+              <div className="p-5 mb-5 mr-1 ml-2 group relative transform transition-transform duration-300 hover:scale-105 ">
                 <div className="bg-gradient-to-br from-cyan-400 via-blue-400 to-indigo-400 w-[250px] h-[440px] rounded-xl shadow-lg border border-gray-300 overflow-hidden">
                   <img
                     className="w-[250px] h-[250px] rounded-tl-xl rounded-tr-xl transform transition-transform hover:scale-105"

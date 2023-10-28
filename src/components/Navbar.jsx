@@ -6,9 +6,10 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/bookpedia-logos.jpeg";
 import { getTotalCartQuantity } from "./cartSlice";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
+  const username = useSelector((state) => state.user.name);
 
   const handleMenu = () => {
     menu == false ? setMenu(true) : setMenu(false);
@@ -47,10 +48,17 @@ const Navbar = () => {
         <div className="bg-yellow-300 md:flex md:justify-evenly w-[15%] pt-5  hidden ">
           <NavLink to="profile" className="focus:text-blue-400">
             <VscAccount className="w-[30px] h-[40px]  hover:text-blue-400" />
+            <p className="text-sm font-bold">{username}</p>
           </NavLink>
           <NavLink to="cart" className="focus:text-blue-400">
-            <BiSolidCart className="w-[30px] h-[40px]  hover:text-blue-400" />
-            <h1>{totalCartQuatity}</h1>
+            <div className="flex">
+              <BiSolidCart className="w-[30px] h-[40px]  hover:text-blue-400" />
+              {totalCartQuatity > 0 && (
+                <h1 className="text-center font-bold p-2 bg-white rounded-full">
+                  {totalCartQuatity}
+                </h1>
+              )}
+            </div>
           </NavLink>
         </div>
         <div className="md:hidden ">
@@ -93,6 +101,11 @@ const Navbar = () => {
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink to="cart" className="focus:text-yellow-400">
                       Cart
+                      {totalCartQuatity > 0 && (
+                        <h1 className="text-center font-bold p-2 bg-white rounded-full">
+                          {totalCartQuatity}
+                        </h1>
+                      )}
                     </NavLink>
                   </li>
                   <hr className="w-full" />

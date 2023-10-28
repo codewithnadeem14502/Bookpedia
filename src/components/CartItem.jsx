@@ -1,12 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { getCurrentQuantityById } from "./cartSlice";
 import UpdateItemQuantity from "./UpdateItemQuantity";
 import DeleteBtn from "./DeleteBtn";
 import { formatCurrency } from "../utils/helpers";
 const CartItem = ({ item }) => {
-  const { Bookid, title, amount, quantity, totalPrice } = item;
-  const currentQuantity = useSelector(getCurrentQuantityById(Bookid));
+  const { Bookid, title, amount, quantity } = item;
 
   return (
     <>

@@ -16,15 +16,16 @@ import BookDetails from "./pages/BookDetails";
 import BestSellingpage from "./components/BestSellingpage";
 import FavouriteBook from "./components/FavouriteBook";
 import CreateOrder from "./context/CreateOrder";
+import Home from "./components/Home";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
-        <Route index element={<Homepage />} />
-
+        <Route path="/book" element={<Homepage />} />
+        <Route index element={<Home />} />
         <Route path="FavouriteBook" element={<FavouriteBook />} />
-        <Route path=":id" element={<BookDetails />} />
+        <Route path="/book/:id" element={<BookDetails />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />

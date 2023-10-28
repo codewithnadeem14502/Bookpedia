@@ -1,15 +1,58 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useFavourite from "../context/Favourite";
-
+import { getCart, removeFavoriteBook } from "../components/favouriteSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { ImBin } from "react-icons/im";
+import EmptyCart from "../pages/EmptyCart";
 const FavouriteBook = () => {
-  const { booknameid } = useFavourite();
-  {
-    console.log(booknameid);
-  }
+  const favitems = useSelector(getCart);
+  const dispatch = useDispatch();
+
+  const uniqueBookIds = new Set();
+  const uniqueBooks = [];
+  const heading = "Add to favourite Now";
+  const para = "Add some items to your favourite list to get started.";
+  const cat = " Favourite Now ";
+
+  favitems.forEach((book) => {
+    if (!uniqueBookIds.has(book.bookid)) {
+      uniqueBookIds.add(book.bookid);
+      uniqueBooks.push(book);
+    }
+  });
+  if (uniqueBooks.length == 0)
+    return <EmptyCart heading={heading} para={para} cat={cat} />;
   return (
     <div>
-      <h1 className="text-xl font-bold">lorem books {booknameid} </h1>
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {uniqueBooks.map((book) => (
+          <div
+            key={book.id}
+            className="bg-white p-4 rounded-md shadow-md transition-transform transform hover:scale-105 hover:shadow-xl hover:bg-gray-100"
+          >
+            <img
+              src={book.bookimage}
+              alt={book.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="mt-4">
+              <h2 className="text-xl font-semibold">{book.title}</h2>
+              <p className="text-gray-500">{book.description}</p>
+              <div className="flex justify-between items-center mt-4">
+                <span className="text-gray-700">{book.price}</span>
+              </div>
+
+              <ImBin
+                className=" w-[35px] h-[30px] text-red-500  text-lg font-medium hover:text-red-400"
+                type="small"
+                onClick={() => dispatch(removeFavoriteBook(book.bookid))}
+              >
+                Deleteaa
+              </ImBin>
+            </div>
+          </div>
+        ))}
+      </div>
       <Link to="/">
         <button className="m-5 p-5 rounded-md bg-cyan-500 font-bold text-lg">
           Go Back

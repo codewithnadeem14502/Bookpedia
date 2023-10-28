@@ -33,6 +33,7 @@ const Books = () => {
       favourite == true ? setFavourite(false) : setFavourite(true);
     }
   };
+
   const h1ClassName = favourite
     ? "text-xl font-bold p-5 m-5 bg-green-500 rounded-lg hover:bg-green-500"
     : "text-xl font-bold p-5 m-5 bg-gray-500 rounded-lg hover:bg-green-500";

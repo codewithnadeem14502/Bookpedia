@@ -25,9 +25,6 @@ const cartSlice = createSlice({
     DeleteItem(state, action) {
       // payload = pizzaId
       state.cart = state.cart.filter((item) => item.Bookid !== action.payload);
-      {
-        console.log(action.payload);
-      }
     },
     increaseItemQuantity(state, action) {
       // payload = pizzaId

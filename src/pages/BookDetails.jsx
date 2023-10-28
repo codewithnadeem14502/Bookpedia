@@ -3,26 +3,33 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import BackButton from "../components/BackButton";
-import { BsFillCartPlusFill } from "react-icons/bs";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { addItem, getCurrentQuantityById } from "../components/cartSlice";
+
+import {
+  DeleteItem,
+  addItem,
+  getCurrentQuantityById,
+} from "../components/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import UpdateItemQuantity from "../components/UpdateItemQuantity";
 import DeleteBtn from "../components/DeleteBtn";
+import {
+  addFavoriteBook,
+  removeFavoriteBook,
+} from "../components/favouriteSlice";
 
 const BookDetails = () => {
-  const [bookvalue, setBookvalue] = useState(0);
-  const [like, setLike] = useState(true);
+  const [like, setLike] = useState(false);
   const { id } = useParams();
-  const [details, setDetails] = useState(null); // Initialize as null
+  const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null); // Add error state
-  const apiKey = "AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM"; // Replace with your actual API key
+  const [error, setError] = useState(null);
+  const apiKey = "AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM";
+
   const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const dispatch = useDispatch();
   const isInCart = currentQuantity > 0;
-  {
-    console.log(currentQuantity);
-  }
+
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${apiKey}`)
@@ -50,17 +57,32 @@ const BookDetails = () => {
       details.volumeInfo.imageLinks.smallThumbnail;
     const pagecount = details.volumeInfo.pageCount;
     const author = details.volumeInfo.authors[0];
-    const publisher = details.volumeInfo.publisher;
     const infoLink = details.volumeInfo.infoLink;
     const publishedDate = details.volumeInfo.publishedDate;
     const description = details.volumeInfo.description;
 
+    function handleLikeItem() {
+      const newItem = {
+        bookid,
+        bookimage,
+        title,
+        pagecount,
+        amount,
+        author,
+      };
+
+      dispatch(addFavoriteBook(newItem));
+    }
+
     const handleLike = () => {
       if (like == true) {
         setLike(false);
-      } else setLike(true);
+      } else {
+        // dispatch(DeleteItem(bookid));
+        setLike(true);
+      }
     };
-    const dispatch = useDispatch();
+
     function handleAddToCart() {
       const newItem = {
         Bookid: bookid,
@@ -69,7 +91,6 @@ const BookDetails = () => {
         quantity: 1,
         totalPrice: amount * 1,
       };
-      console.log(newItem);
       dispatch(addItem(newItem));
     }
 
@@ -90,10 +111,16 @@ const BookDetails = () => {
                 onClick={handleLike}
                 className=" font-bold text-lg rounded-lg"
               >
-                {like == true ? (
-                  <AiOutlineHeart className="w-[30px] h-[30px] text-red-500" />
+                {like == false ? (
+                  <AiOutlineHeart
+                    className="w-[30px] h-[30px] text-red-500"
+                    onClick={handleLikeItem}
+                  />
                 ) : (
-                  <AiFillHeart className="w-[30px] h-[30px] text-red-500" />
+                  <AiFillHeart
+                    className="w-[30px] h-[30px] text-red-500"
+                    onClick={() => dispatch(removeFavoriteBook(bookid))}
+                  />
                 )}
               </button>
             </div>
@@ -122,8 +149,11 @@ const BookDetails = () => {
               <h3 className="mt-5  mr-5 font-medium md:mt-2">
                 Author by: {author}
               </h3>
-              <h3 className="mt-2 md-5 font-medium  md:mt-2 md:mb-0">
+              <h3 className="mt-5  mr-5 font-medium md:mt-2">
                 PublishedDate : {publishedDate}
+              </h3>
+              <h3 className="mt-2 md-5 p-2 text-black font-medium  md:mt-2 md:mb-0 bg-yellow-500 rounded-lg">
+                Total-Page : {pagecount}
               </h3>
             </div>
 

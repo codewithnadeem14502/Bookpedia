@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+  const username = useSelector((state) => state.user.name);
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
@@ -10,7 +12,7 @@ const Profile = () => {
             alt="Profile Picture"
             className="w-32 h-32 rounded-full mx-auto"
           />
-          <h1 className="text-3xl font-bold mt-4">John Doe</h1>
+          <h1 className="text-3xl font-bold mt-4">{username}</h1>
           <p className="text-gray-600 text-sm">Author & Bibliophile</p>
         </div>
         <div className="mt-6">
