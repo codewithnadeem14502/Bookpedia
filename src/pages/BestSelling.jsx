@@ -155,7 +155,7 @@ const BestSelling = () => {
                 className="bg-blue-500 text-white px-3 py-1 rounded-full hover:bg-blue-600"
                 onClick={() => alert(`Added ₹{book.title} to cart`)}
               >
-                Add to Cart
+                Buy Now
               </button>
             </div>
           </div>

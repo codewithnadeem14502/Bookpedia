@@ -5,6 +5,10 @@ import Loading from "../components/Loading";
 import BackButton from "../components/BackButton";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { addItem, getCurrentQuantityById } from "../components/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import UpdateItemQuantity from "../components/UpdateItemQuantity";
+import DeleteBtn from "../components/DeleteBtn";
 
 const BookDetails = () => {
   const [bookvalue, setBookvalue] = useState(0);
@@ -14,7 +18,11 @@ const BookDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null); // Add error state
   const apiKey = "AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM"; // Replace with your actual API key
-
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const isInCart = currentQuantity > 0;
+  {
+    console.log(currentQuantity);
+  }
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${apiKey}`)
@@ -52,6 +60,18 @@ const BookDetails = () => {
         setLike(false);
       } else setLike(true);
     };
+    const dispatch = useDispatch();
+    function handleAddToCart() {
+      const newItem = {
+        Bookid: bookid,
+        title,
+        amount,
+        quantity: 1,
+        totalPrice: amount * 1,
+      };
+      console.log(newItem);
+      dispatch(addItem(newItem));
+    }
 
     return (
       <div key={bookid} className="">
@@ -77,13 +97,22 @@ const BookDetails = () => {
                 )}
               </button>
             </div>
-            <span className="p-5 m-5 bg-green-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
-              <a href={infoLink} target="_blank">
-                Buy Now
-              </a>
-
-              {/* <BsFillCartPlusFill className="w-[40px] h-[40px]" /> */}
-            </span>
+            {isInCart && (
+              <div className="flex items-center gap-3 sm:gap-8">
+                <UpdateItemQuantity
+                  id={bookid}
+                  currentQuantity={currentQuantity}
+                />
+                <DeleteBtn Bookid={bookid} />
+              </div>
+            )}
+            {!isInCart && (
+              <span className="p-5 m-5 bg-green-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
+                <button type="small" onClick={handleAddToCart}>
+                  Add to cart
+                </button>
+              </span>
+            )}
           </div>
           <div className="mt-[55px]  text-start  w-full   rounded-lg lg:ml-10 lg:w-[50%] p-5 lg:p-0">
             <h1 className="font-Poppins font-bold rounded-lg text-center bg-cyan-500 text-2xl md:text-4xl md:py-5 lg:text-5xl">
@@ -97,10 +126,17 @@ const BookDetails = () => {
                 PublishedDate : {publishedDate}
               </h3>
             </div>
-            <p className="mt-4 font-Poppins font-medium text-start">
-              {description}
-            </p>
 
+            <div className=" mt-5 ">
+              <p className="p-4 h-auto font-Poppins font-medium text-start">
+                {description}
+              </p>
+              <span className="p-5 m-5  text-yellow-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
+                <a href={infoLink} target="_blank">
+                  More Info..
+                </a>
+              </span>
+            </div>
             <BackButton />
           </div>
         </div>

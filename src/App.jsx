@@ -15,6 +15,7 @@ import RootLayout from "./layouts/RootLayout";
 import BookDetails from "./pages/BookDetails";
 import BestSellingpage from "./components/BestSellingpage";
 import FavouriteBook from "./components/FavouriteBook";
+import CreateOrder from "./context/CreateOrder";
 
 function App() {
   const router = createBrowserRouter(
@@ -29,6 +30,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/best-selling" element={<BestSellingpage />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/order/new" element={<CreateOrder />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )

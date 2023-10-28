@@ -3,19 +3,24 @@ import { VscAccount } from "react-icons/vsc";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/bookpedia-logos.jpeg";
+import { getTotalCartQuantity } from "./cartSlice";
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => {
     menu == false ? setMenu(true) : setMenu(false);
   };
+  const totalCartQuatity = useSelector(getTotalCartQuantity);
   return (
     <>
       <div className="flex justify-between   h-[95px]">
         <div className=" ">
-          <img className="w-[150px] h-[95px]" src={logo} alt="logo" />
+          <Link to="/">
+            <img className="w-[150px] h-[95px]" src={logo} alt="logo" />
+          </Link>
         </div>
         <div className="bg-blue-500 w-full hidden md:block items-center ">
           <ul className="text-white flex justify-evenly mt-8">
@@ -45,10 +50,11 @@ const Navbar = () => {
           </NavLink>
           <NavLink to="cart" className="focus:text-blue-400">
             <BiSolidCart className="w-[30px] h-[40px]  hover:text-blue-400" />
+            <h1>{totalCartQuatity}</h1>
           </NavLink>
         </div>
         <div className="md:hidden ">
-          <div className="flex justify-center mr-3 mt-2">
+          <div className="flex justify-center mr-3 mt-5">
             {menu != true ? (
               <GiHamburgerMenu
                 className="w-[30px] h-[40px] "
