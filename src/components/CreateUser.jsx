@@ -16,7 +16,7 @@ function CreateUser() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen shadow-lg">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-lg shadow-lg"
@@ -30,7 +30,7 @@ function CreateUser() {
           placeholder="Your full name"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="input mb-4 w-72 text-black pl-2"
+          className="input mb-4 w-72 text-black pl-2  border-solid  border-black border-2 rounded-md"
         />
 
         {username !== "" && (

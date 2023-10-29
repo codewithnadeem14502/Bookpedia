@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="bg-blue-500 w-full hidden md:block items-center ">
           <ul className="text-white flex justify-evenly mt-8">
             <li className="font-bold text-xl  hover:text-yellow-400">
-              <NavLink to="/" className="focus:text-yellow-400">
+              <NavLink to="/book" className="focus:text-yellow-400">
                 Home
               </NavLink>
             </li>
@@ -45,14 +45,14 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="bg-yellow-300 md:flex md:justify-evenly w-[15%] pt-5  hidden ">
-          <NavLink to="profile" className="focus:text-blue-400">
-            <VscAccount className="w-[30px] h-[40px]  hover:text-blue-400" />
+        <div className="bg-blue-500  md:flex md:justify-evenly w-[15%] pt-5  hidden ">
+          <NavLink to="profile" className="text-white text-lg">
+            <VscAccount className="w-[30px] h-[40px]  hover:text-yellow-400" />
             <p className="text-sm font-bold">{username}</p>
           </NavLink>
-          <NavLink to="cart" className="focus:text-blue-400">
+          <NavLink to="cart" className="text-white text-lg">
             <div className="flex">
-              <BiSolidCart className="w-[30px] h-[40px]  hover:text-blue-400" />
+              <BiSolidCart className="w-[30px] h-[40px]  hover:text-yellow-400" />
               {totalCartQuatity > 0 && (
                 <h1 className="text-center font-bold p-2 bg-white rounded-full">
                   {totalCartQuatity}
@@ -77,7 +77,11 @@ const Navbar = () => {
               <div className="flex bg-red-500 justify-center absolute top-11 right-16 w-[270px] h-[300px] rounded-md ">
                 <ul className="text-white flex justify-evenly  flex-col text-center   ">
                   <li className="font-bold text-xl hover:text-yellow-400">
-                    <NavLink to="/" className="focus:text-yellow-400">
+                    <NavLink
+                      to="/book"
+                      className="focus:text-yellow-400 "
+                      onClick={() => setMenu(false)}
+                    >
                       Home
                     </NavLink>
                   </li>
@@ -86,6 +90,7 @@ const Navbar = () => {
                     <NavLink
                       to="best-selling"
                       className="focus:text-yellow-400"
+                      onClick={() => setMenu(false)}
                     >
                       {" "}
                       Best Seller
@@ -93,16 +98,24 @@ const Navbar = () => {
                   </li>
                   <hr />
                   <li className="font-medium text-xl hover:text-yellow-400">
-                    <NavLink to="about-us" className="focus:text-yellow-400">
+                    <NavLink
+                      to="about-us"
+                      className="focus:text-yellow-400"
+                      onClick={() => setMenu(false)}
+                    >
                       About Us
                     </NavLink>
                   </li>
                   <hr className="w-full" />
                   <li className="font-medium text-xl hover:text-yellow-400">
-                    <NavLink to="cart" className="focus:text-yellow-400">
+                    <NavLink
+                      to="cart"
+                      className="focus:text-yellow-400"
+                      onClick={() => setMenu(false)}
+                    >
                       Cart
                       {totalCartQuatity > 0 && (
-                        <h1 className="text-center font-bold p-2 bg-white rounded-full">
+                        <h1 className="text-center font-bold p-0 md:p-2 bg-blue-400 rounded-full">
                           {totalCartQuatity}
                         </h1>
                       )}
@@ -110,13 +123,21 @@ const Navbar = () => {
                   </li>
                   <hr className="w-full" />
                   <li className="font-medium text-xl hover:text-yellow-400">
-                    <NavLink to="profile" className="focus:text-yellow-400">
+                    <NavLink
+                      to="profile"
+                      className="focus:text-yellow-400"
+                      onClick={() => setMenu(false)}
+                    >
                       Profile
                     </NavLink>
                   </li>
                   <hr className="w-full" />
                   <li className="font-medium text-xl hover:text-yellow-400">
-                    <NavLink to="contact" className="focus:text-yellow-400">
+                    <NavLink
+                      to="contact"
+                      className="focus:text-yellow-400"
+                      onClick={() => setMenu(false)}
+                    >
                       Contact
                     </NavLink>
                   </li>

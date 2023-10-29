@@ -19,12 +19,12 @@ function Home() {
           type="video/mp4"
         />
       </video>
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-      <div className="relative z-10 w-full h-[50%] flex flex-col items-center justify-center text-white">
+      <div className="absolute top-0 left-0 w-[80%] md:w-full h-full"></div>
+      <div className="relative z-10 w-[80%] md:w-full h-[50%] flex flex-col items-center justify-center text-white">
         <h1 className="text-4xl font-semibold text-yellow-500 mb-4 animate-pulse">
           Best Place to Find Books
         </h1>
-        <p className="text-lg mb-6 text-gray-700 animate-fade-in">
+        <p className="text-lg mb-6 text-slate-100 animate-fade-in">
           Welcome to the world of literature and knowledge.
         </p>
         {username === "" ? (

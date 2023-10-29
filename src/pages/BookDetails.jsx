@@ -104,7 +104,7 @@ const BookDetails = () => {
               alt="bookimage"
             />
             <div className="flex ">
-              <h2 className="font-bold text-xl ml-12 mb-5 md:m-5">
+              <h2 className="font-bold text-xl ml-12 mb-5 md:m-5 text-center">
                 &#8377;{amount}
               </h2>
               <button
@@ -113,12 +113,13 @@ const BookDetails = () => {
               >
                 {like == false ? (
                   <AiOutlineHeart
-                    className="w-[30px] h-[30px] text-red-500"
+                    className="w-[30px] h-[30px] text-red-500 mb-5 ml-2 md:m-0"
                     onClick={handleLikeItem}
                   />
                 ) : (
                   <AiFillHeart
-                    className="w-[30px] h-[30px] text-red-500"
+                    ml-2
+                    className="w-[30px] h-[30px] text-red-500 mb-5 ml-2 md:m-0"
                     onClick={() => dispatch(removeFavoriteBook(bookid))}
                   />
                 )}
@@ -152,7 +153,7 @@ const BookDetails = () => {
               <h3 className="mt-5  mr-5 font-medium md:mt-2">
                 PublishedDate : {publishedDate}
               </h3>
-              <h3 className="mt-2 md-5 p-2 text-black font-medium  md:mt-2 md:mb-0 bg-yellow-500 rounded-lg">
+              <h3 className="mt-2 md-5 p-2 text-black font-medium  md:mt-2 md:mb-0 bg-yellow-500 rounded-lg text-center">
                 Total-Page : {pagecount}
               </h3>
             </div>
@@ -160,12 +161,12 @@ const BookDetails = () => {
             <div className=" mt-5 ">
               <p className="p-4 h-auto font-Poppins font-medium text-start">
                 {description}
+                <span className="p-3 m-3  md:p-5 md:m-5  text-yellow-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
+                  <a href={infoLink} target="_blank" className="underline">
+                    More Info..
+                  </a>
+                </span>
               </p>
-              <span className="p-5 m-5  text-yellow-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
-                <a href={infoLink} target="_blank">
-                  More Info..
-                </a>
-              </span>
             </div>
             <BackButton />
           </div>

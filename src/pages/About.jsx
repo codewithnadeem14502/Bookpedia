@@ -42,7 +42,7 @@ const About = () => {
 
         <div className="mt-8">
           <button
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+            className="bg-blue-500 text-white  px-4 py-2 rounded hover:bg-blue-600 transition"
             onClick={() => setFaqOpen(!faqOpen)}
           >
             {faqOpen ? "Close FAQ" : "Open FAQ"}
@@ -55,14 +55,14 @@ const About = () => {
                   state === "entered" ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <h2 className="text-2xl font-semibold mt-4">
+                <h2 className="text-lg md:text-2xl font-semibold mt-4">
                   Frequently Asked Questions
                 </h2>
                 <ul>
                   {faqQuestions.map((faq, index) => (
                     <li key={index} className="mt-2">
                       <button
-                        className="text-blue-500 hover:underline"
+                        className="text-blue-500 text-sm hover:underline"
                         onClick={() => alert(faq.answer)}
                       >
                         {faq.question}
@@ -87,11 +87,6 @@ const About = () => {
             <li>Research and study areas for patrons.</li>
             <li>Regular events and book clubs for our community.</li>
           </ul>
-          {/* <div className="bg-gray-100 p-2"> */}
-          {/* <div className="max-w-screen-lg mx-auto"> */}
-
-          {/* </div> */}
-          {/* </div> */}
         </div>
         <h2 className="text-xl font-semibold mt-8 mb-4">Contact Us</h2>
         <p className="text-gray-700">
@@ -99,7 +94,7 @@ const About = () => {
           please feel free to contact us at:
         </p>
         <p className="text-gray-700">
-          Email: info@librarywebsite.com
+          Email: codewithnadeem@gmail.com
           <br />
           Phone: +1 (123) 456-7890
         </p>

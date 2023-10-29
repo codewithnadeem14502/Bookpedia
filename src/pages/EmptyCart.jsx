@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const EmptyCart = ({ heading, para, cat }) => {
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 rounded-md shadow-md w-80 text-center">
+      <div className="bg-white p-8 rounded-md shadow-md hover:shadow-xl w-70 md:w-ful text-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

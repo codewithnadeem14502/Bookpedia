@@ -1,8 +1,15 @@
 import React from "react";
+import {
+  AiFillCodeSandboxCircle,
+  AiFillGithub,
+  AiFillLinkedin,
+  AiOutlineTwitter,
+} from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-8">
+    <footer className="bg-gray-800 text-white py-8 md:p-5">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-4 md:mb-0">
           <p className="text-2xl font-semibold">Bookpedia</p>
@@ -11,33 +18,68 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex space-x-6">
-          <a href="#" className="hover:text-gray-400">
+          <Link
+            to="/"
+            className="hover:text-yellow-400 hover:underline text-lg font-semibold "
+          >
             Home
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </Link>
+          <Link
+            to="/book"
+            className="hover:text-yellow-400 hover:underline text-lg font-semibold "
+          >
             Books
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </Link>
+          <Link
+            to="/about-us"
+            className="hover:text-yellow-400 hover:underline text-lg font-semibold "
+          >
             About
-          </a>
-          <a href="#" className="hover:text-gray-400">
+          </Link>
+          <Link
+            to="/contact"
+            className="hover:text-yellow-400 hover:underline text-lg font-semibold "
+          >
             Contact
-          </a>
+          </Link>
         </div>
-        <div className="mt-4 md:mt-0">
-          <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-facebook"></i> Facebook
+        <div className="m-8 md:mt-5 text-center">
+          <div className="flex justify-between mb-5 md:m-0  text-center">
+            <a
+              href="https://codewithnadeem14502.github.io/portfolio/"
+              className="text-gray-400 hover:text-white "
+              target="_blank"
+            >
+              <i></i>{" "}
+              <AiFillCodeSandboxCircle className="w-6 h-6 text-white hover:text-yellow-300" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-twitter"></i> Twitter
+            <a
+              href="https://twitter.com/MD_NADEEM_"
+              className="text-gray-400 hover:text-white"
+              target="_blank"
+            >
+              <i className="fab fa-twitter"></i>{" "}
+              <AiOutlineTwitter className="w-6 h-6 text-white hover:text-yellow-300" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white">
-              <i className="fab fa-instagram"></i> Instagram
+            <a
+              href="https://www.linkedin.com/in/mohd-nadeem-8128311bb/"
+              className="text-gray-400 hover:text-white"
+              target="_blank"
+            >
+              <i className="fab fa-instagram"></i>{" "}
+              <AiFillLinkedin className="w-6 h-6 text-white hover:text-yellow-300" />
+            </a>
+            <a
+              href="https://github.com/codewithnadeem14502"
+              className="text-gray-400 hover:text-white"
+              target="_blank"
+            >
+              <i className="fab fa-instagram"></i>{" "}
+              <AiFillGithub className="w-6 h-6 text-white hover:text-yellow-300" />
             </a>
           </div>
-          <p className="mt-2">Subscribe to our newsletter:</p>
-          <div className="flex mt-2">
+          <p className="mt-8">Subscribe to our newsletter:</p>
+          <div className="flex mt-3">
             <input
               type="email"
               placeholder="Your Email"

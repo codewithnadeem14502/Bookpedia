@@ -8,7 +8,7 @@ function UpdateItemQuantity({ id, currentQuantity }) {
   return (
     <div className="flex items-center gap-2 md:gap-3">
       <button
-        className="m-2 p-2 bg-gray-500 rounded-lg text-lg font-bold hover:bg-black hover:text-white"
+        className="md:m-2 md:p-2 bg-gray-500 rounded-lg text-lg font-bold hover:bg-black hover:text-white"
         type="round"
         onClick={() => dispatch(decreaseItemQuantity(id))}
       >

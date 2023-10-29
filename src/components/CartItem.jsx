@@ -8,7 +8,7 @@ const CartItem = ({ item }) => {
   return (
     <>
       <li className="py-3 sm:flex sm:items-center sm:justify-between">
-        <p className="mb-1 sm:mb-0 font-bold text-lg">
+        <p className="mb-1 sm:mb-0 font-bold text-sm md:text-lg ">
           {quantity}&times; {title}
         </p>
         <div className="flex items-center justify-between sm:gap-6">

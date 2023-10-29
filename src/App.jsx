@@ -17,6 +17,7 @@ import BestSellingpage from "./components/BestSellingpage";
 import FavouriteBook from "./components/FavouriteBook";
 import CreateOrder from "./context/CreateOrder";
 import Home from "./components/Home";
+import ThankYou from "./components/ThankYou";
 
 function App() {
   const router = createBrowserRouter(
@@ -32,6 +33,7 @@ function App() {
         <Route path="/best-selling" element={<BestSellingpage />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/order/new" element={<CreateOrder />} />
+        <Route path="/succesfull" element={<ThankYou />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )

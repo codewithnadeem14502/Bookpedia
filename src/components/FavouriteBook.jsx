@@ -4,6 +4,8 @@ import { getCart, removeFavoriteBook } from "../components/favouriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ImBin } from "react-icons/im";
 import EmptyCart from "../pages/EmptyCart";
+import clipboard from "clipboard-copy";
+import CopyToClipboardButton from "../components/CopyToClipboardButton";
 const FavouriteBook = () => {
   const favitems = useSelector(getCart);
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ const FavouriteBook = () => {
   });
   if (uniqueBooks.length == 0)
     return <EmptyCart heading={heading} para={para} cat={cat} />;
+
   return (
     <div>
       <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -41,14 +44,14 @@ const FavouriteBook = () => {
               <div className="flex justify-between items-center mt-4">
                 <span className="text-gray-700">{book.price}</span>
               </div>
-
-              <ImBin
-                className=" w-[35px] h-[30px] text-red-500  text-lg font-medium hover:text-red-400"
-                type="small"
-                onClick={() => dispatch(removeFavoriteBook(book.bookid))}
-              >
-                Deleteaa
-              </ImBin>
+              <div className="flex justify-between">
+                <ImBin
+                  className=" w-[35px] h-[30px] text-red-500  text-lg font-medium hover:text-red-400"
+                  type="small"
+                  onClick={() => dispatch(removeFavoriteBook(book.bookid))}
+                ></ImBin>
+                <CopyToClipboardButton BookName={book.title} />
+              </div>
             </div>
           </div>
         ))}

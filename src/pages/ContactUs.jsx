@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 
 const ContactUs = () => {
@@ -10,8 +9,8 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-gray-100 h-screen flex items-center justify-center">
-      <div className="max-w-md w-full mx-4">
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center my-8 md:m-0">
+      <div className="max-w-lg w-full mx-4">
         <div className="bg-white rounded-lg shadow-md p-8">
           <h1 className="text-3xl font-bold mb-5 text-center">Contact Us</h1>
           <button
