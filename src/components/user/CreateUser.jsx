@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserName } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ function CreateUser() {
     dispatch(addUserName(username));
     navigate("/book");
   }
+  const usernamecurr = useSelector((state) => state.user.username);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen shadow-lg">
@@ -33,7 +34,7 @@ function CreateUser() {
           className="input mb-4 w-72 text-black pl-2  border-solid  border-black border-2 rounded-md"
         />
 
-        {username !== "" && (
+        {usernamecurr === "" && (
           <div>
             <button
               type="submit"

@@ -1,8 +1,7 @@
 import React from "react";
-
-import { bestSellingBooksData } from "../context/BestSellingData";
-import BackButton from "../components/BackButton";
-import BookItem from "../components/BookItem";
+import { bestSellingBooksData } from "../../context/BestSellingData";
+import BackButton from "../Buttons/BackButton";
+import BookItem from "../book/BookItem";
 
 const BestSelling = () => {
   const bestSellingBooks = bestSellingBooksData;

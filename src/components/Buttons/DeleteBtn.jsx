@@ -1,7 +1,7 @@
 import React from "react";
 import { ImBin } from "react-icons/im";
 import { useDispatch } from "react-redux";
-import { DeleteItem } from "./cartSlice";
+import { DeleteItem } from "../cart/cartSlice";
 
 const DeleteBtn = ({ Bookid }) => {
   const dispatch = useDispatch();

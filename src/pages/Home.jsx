@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import CreateUser from "./CreateUser";
+import CreateUser from "../components/user/CreateUser";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -27,6 +27,7 @@ function Home() {
         <p className="text-lg mb-6 text-slate-100 animate-fade-in">
           Welcome to the world of literature and knowledge.
         </p>
+
         {username === "" ? (
           <CreateUser />
         ) : (

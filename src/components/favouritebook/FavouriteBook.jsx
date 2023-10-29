@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getCart, removeFavoriteBook } from "../components/favouriteSlice";
+import { getCart, removeFavoriteBook } from "./favouriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ImBin } from "react-icons/im";
-import EmptyCart from "../pages/EmptyCart";
+import EmptyCart from "../cart/EmptyCart";
 import clipboard from "clipboard-copy";
-import CopyToClipboardButton from "../components/CopyToClipboardButton";
+import CopyToClipboardButton from "../Buttons/CopyToClipboardButton";
 const FavouriteBook = () => {
   const favitems = useSelector(getCart);
   const dispatch = useDispatch();

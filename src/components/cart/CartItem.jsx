@@ -1,7 +1,7 @@
 import React from "react";
-import UpdateItemQuantity from "./UpdateItemQuantity";
-import DeleteBtn from "./DeleteBtn";
-import { formatCurrency } from "../utils/helpers";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
+import DeleteBtn from "../Buttons/DeleteBtn";
+import { formatCurrency } from "../../utils/helpers";
 const CartItem = ({ item }) => {
   const { Bookid, title, amount, quantity } = item;
 

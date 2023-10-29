@@ -1,22 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Loading from "../components/Loading";
-import BackButton from "../components/BackButton";
+import Loading from "./Loading";
+import BackButton from "../Buttons/BackButton";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
-import {
-  DeleteItem,
-  addItem,
-  getCurrentQuantityById,
-} from "../components/cartSlice";
+import { DeleteItem, addItem, getCurrentQuantityById } from "../cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import UpdateItemQuantity from "../components/UpdateItemQuantity";
-import DeleteBtn from "../components/DeleteBtn";
+import UpdateItemQuantity from "../cart/UpdateItemQuantity";
+import DeleteBtn from "../Buttons/DeleteBtn";
 import {
   addFavoriteBook,
   removeFavoriteBook,
-} from "../components/favouriteSlice";
+} from "../favouritebook/favouriteSlice";
 
 const BookDetails = () => {
   const [like, setLike] = useState(false);

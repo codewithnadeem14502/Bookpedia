@@ -1,5 +1,4 @@
-import Books from "../components/Books";
-import { FavouriteProvider } from "../context/Favourite";
+import Books from "../components/book/Books";
 
 const Homepage = () => {
   return <Books />;

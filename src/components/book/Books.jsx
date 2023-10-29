@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "./BookCard";
-import Intro from "./Intro";
-
+import Intro from "../minicomponent/Intro";
 import { FcSearch } from "react-icons/fc";
-import FavouriteBook from "./FavouriteBook";
 import { Link } from "react-router-dom";
 const Books = () => {
   const [data, setData] = useState([]);

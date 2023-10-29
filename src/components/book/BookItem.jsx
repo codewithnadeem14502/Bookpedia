@@ -1,6 +1,6 @@
 import React from "react";
 import clipboard from "clipboard-copy";
-import CopyToClipboardButton from "../components/CopyToClipboardButton";
+import CopyToClipboardButton from "../Buttons/CopyToClipboardButton";
 const BookItem = ({ book }) => {
   const { id, image, title, description, price, bookimage } = book;
 

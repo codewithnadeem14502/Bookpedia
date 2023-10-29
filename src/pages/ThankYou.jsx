@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"; // Assuming you are using React Router for navigation
-import { clearCart } from "./cartSlice";
+import { clearCart } from "../components/cart/cartSlice";
 
 const ThankYou = () => {
   const dispatch = useDispatch();

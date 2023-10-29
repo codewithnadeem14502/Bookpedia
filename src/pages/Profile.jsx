@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const username = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.user.username);
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BestSelling from "../pages/BestSelling";
+import BestSelling from "../book/BestSelling";
 import Loading from "./Loading";
 
 const BestSellingpage = () => {

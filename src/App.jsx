@@ -7,17 +7,17 @@ import {
 import Homepage from "./pages/Homepage";
 import ContactUs from "./pages/ContactUs";
 import Profile from "./pages/Profile";
-import Cart from "./pages/Cart";
-import BestSelling from "./pages/BestSelling";
+import Cart from "./components/cart/Cart";
+import BestSelling from "./components/book/BestSelling";
 import About from "./pages/About";
 import PageNotFound from "./pages/PageNotFound";
 import RootLayout from "./layouts/RootLayout";
-import BookDetails from "./pages/BookDetails";
-import BestSellingpage from "./components/BestSellingpage";
-import FavouriteBook from "./components/FavouriteBook";
-import CreateOrder from "./context/CreateOrder";
-import Home from "./components/Home";
-import ThankYou from "./components/ThankYou";
+import BookDetails from "./components/book/BookDetails";
+import BestSellingpage from "./components/book/BestSellingpage";
+import FavouriteBook from "./components/favouritebook/FavouriteBook";
+import CreateOrder from "./components/user/CreateOrder";
+import Home from "./pages/Home";
+import ThankYou from "./pages/ThankYou";
 
 function App() {
   const router = createBrowserRouter(

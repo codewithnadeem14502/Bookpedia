@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { getCart, getTotalCartPrice } from "../components/cartSlice";
+import { getCart, getTotalCartPrice } from "../cart/cartSlice";
 import { Form } from "react-router-dom";
-
-import EmptyCart from "../pages/EmptyCart";
-import PaymentRazorpay from "../utils/PaymentRazorpay";
+import EmptyCart from "../cart/EmptyCart";
+import PaymentRazorpay from "../../utils/PaymentRazorpay";
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
     str
   );
 const CreateOrder = () => {
   const [phoneError, setPhoneError] = useState(false);
-  const username = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.user.username);
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [email, setemail] = useState("");
@@ -55,6 +54,7 @@ const CreateOrder = () => {
             value={phone}
             type="tel"
             name="phone"
+            placeholder=" 11111111111"
             required
             onChange={handlePhoneChange}
           />
@@ -73,6 +73,7 @@ const CreateOrder = () => {
             value={email}
             type="tel"
             name="email"
+            placeholder=" test@gmail.com"
             required
             onChange={(e) => setemail(e.target.value)}
           />
@@ -87,6 +88,7 @@ const CreateOrder = () => {
             type="text"
             value={address}
             name="address"
+            placeholder=" xyz"
             required
             onChange={(e) => setAddress(e.target.value)}
           />

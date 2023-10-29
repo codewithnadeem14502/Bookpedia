@@ -4,12 +4,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/bookpedia-logos.jpeg";
-import { getTotalCartQuantity } from "./cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import logo from "../../assets/bookpedia-logos.jpeg";
+import { getTotalCartQuantity } from "../cart/cartSlice";
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
-  const username = useSelector((state) => state.user.name);
+  const username = useSelector((state) => state.user.username);
 
   const handleMenu = () => {
     menu == false ? setMenu(true) : setMenu(false);
@@ -41,20 +41,28 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li className="font-medium text-xl hover:text-yellow-400">
-              <NavLink to="contact">Contact</NavLink>
+              <NavLink to="contact" className="focus:text-yellow-400">
+                Contact
+              </NavLink>
             </li>
           </ul>
         </div>
         <div className="bg-blue-500  md:flex md:justify-evenly w-[15%] pt-5  hidden ">
-          <NavLink to="profile" className="text-white text-lg">
+          <NavLink
+            to="profile"
+            className="text-white text-lg focus:text-yellow-400"
+          >
             <VscAccount className="w-[30px] h-[40px]  hover:text-yellow-400" />
-            <p className="text-sm font-bold">{username}</p>
+            <p className="text-sm font-bold text-black">{username}</p>
           </NavLink>
-          <NavLink to="cart" className="text-white text-lg">
+          <NavLink
+            to="cart"
+            className="text-white text-lg focus:text-yellow-400"
+          >
             <div className="flex">
               <BiSolidCart className="w-[30px] h-[40px]  hover:text-yellow-400" />
               {totalCartQuatity > 0 && (
-                <h1 className="text-center font-bold p-2 bg-white rounded-full">
+                <h1 className="text-center text-white font-bold p-2 bg-black rounded-full">
                   {totalCartQuatity}
                 </h1>
               )}
