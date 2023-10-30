@@ -20,7 +20,11 @@ const Navbar = () => {
       <div className="flex justify-between   h-[95px]">
         <div className=" ">
           <Link to="/">
-            <img className="w-[150px] h-[95px]" src={logo} alt="logo" />
+            <img
+              className="w-[100px] h-[95px] md:w-[150px] md:h-[95px]"
+              src={logo}
+              alt="logo"
+            />
           </Link>
         </div>
         <div className="bg-blue-500 w-full hidden md:block items-center ">
@@ -72,10 +76,27 @@ const Navbar = () => {
         <div className="md:hidden ">
           <div className="flex justify-center mr-3 mt-5">
             {menu != true ? (
-              <GiHamburgerMenu
-                className="w-[30px] h-[40px] "
-                onClick={handleMenu}
-              />
+              <div className="flex w-[100px] justify-between">
+                <NavLink
+                  to="cart"
+                  className="focus:text-yellow-400"
+                  // onClick={() => setMenu(false)}
+                >
+                  <div className="flex">
+                    <BiSolidCart className="w-[30px] h-[40px]  hover:text-yellow-400" />
+                    {totalCartQuatity > 0 && (
+                      <h1 className="text-center text-white font-bold p-2 bg-yellow-500 rounded-full">
+                        {totalCartQuatity}
+                      </h1>
+                    )}
+                  </div>
+                </NavLink>
+
+                <GiHamburgerMenu
+                  className="w-[30px] h-[40px] "
+                  onClick={handleMenu}
+                />
+              </div>
             ) : (
               <RxCross2 className="w-[30px] h-[40px] " onClick={handleMenu} />
             )}

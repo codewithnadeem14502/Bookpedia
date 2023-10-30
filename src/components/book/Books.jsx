@@ -105,28 +105,35 @@ const Books = () => {
         </div>
       </div>
       <hr />
-      <div className="flex justify-between px-5 cursor-pointer bg-slate-300">
-        <Link to="/FavouriteBook ">
-          <h1 className={h1ClassName}>Favourite book</h1>
-        </Link>
-        {data.length > 0 && (
-          <div className="flex justify-between">
-            <label className="text-xl font-bold p-5 m-5">
-              Sort by:
-              <select
-                value={`${sortOrder}-${sortCriterion}`}
-                onChange={handleSortChange}
-                className="p-2 ml-2 bg-gray-100 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200"
-              >
-                <option value="asc-title">A - Z</option>
-                <option value="desc-title">Z - A</option>
-                <option value="asc-price">Price Low to High</option>
-                <option value="desc-price">Price High to Low</option>
-              </select>
-            </label>
+      <div className="bg-slate-300 px-5 cursor-pointer">
+        <div className="sm:flex sm:justify-between items-center">
+          <div className="w-[90%] md:w-1/2 flex justify-center items-center">
+            <Link to="/FavouriteBook">
+              <h1 className={h1ClassName}>Favourite book</h1>
+            </Link>
           </div>
-        )}
+          <div className="mt-4 sm:mt-0 sm:w-1/2 sm:flex sm:justify-center items-center pb-5">
+            {data.length > 0 && (
+              <div className="sm:flex sm:items-center">
+                <label className="text-xl font-bold p-5 m-5">
+                  Sort by:
+                  <select
+                    value={`${sortOrder}-${sortCriterion}`}
+                    onChange={handleSortChange}
+                    className="p-2 ml-2 bg-gray-100 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  >
+                    <option value="asc-title">A - Z</option>
+                    <option value="desc-title">Z - A</option>
+                    <option value="asc-price">Price Low to High</option>
+                    <option value="desc-price">Price High to Low</option>
+                  </select>
+                </label>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
+
       <hr />
       <div className="bg-slate-300 w-full pt-5">
         <div className="flex flex-wrap justify-center">
