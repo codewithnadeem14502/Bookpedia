@@ -112,10 +112,10 @@ const Books = () => {
               <h1 className={h1ClassName}>Favourite book</h1>
             </Link>
           </div>
-          <div className="mt-4 sm:mt-0 sm:w-1/2 sm:flex sm:justify-center items-center pb-5">
+          <div className="mt-4 sm:m-0 w-full  flex justify-center items-center pb-5">
             {data.length > 0 && (
               <div className="sm:flex sm:items-center">
-                <label className="text-xl font-bold p-5 m-5">
+                <label className="text-xl font-bold">
                   Sort by:
                   <select
                     value={`${sortOrder}-${sortCriterion}`}
