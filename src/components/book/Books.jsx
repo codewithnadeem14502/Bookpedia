@@ -1,71 +1,136 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import BookCard from "./BookCard";
 import Intro from "../minicomponent/Intro";
 import { FcSearch } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { APIKEY } from "../../context/BestSellingData";
 const Books = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [favourite, setFavourite] = useState(false);
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortCriterion, setSortCriterion] = useState("title");
+
+  const sortData = (order, sortBy) => {
+    const sortedData = [...data];
+
+    sortedData.sort((a, b) => {
+      if (
+        a &&
+        a.volumeInfo &&
+        a.volumeInfo.title &&
+        b &&
+        b.volumeInfo &&
+        b.volumeInfo.title
+      ) {
+        if (sortBy === "title") {
+          if (order === "asc") {
+            return a.volumeInfo.title.localeCompare(b.volumeInfo.title);
+          } else {
+            return b.volumeInfo.title.localeCompare(a.volumeInfo.title);
+          }
+        } else if (sortBy === "price") {
+          const priceA = a.saleInfo?.listPrice?.amount || 0;
+          const priceB = b.saleInfo?.listPrice?.amount || 0;
+          if (order === "asc") {
+            return priceA - priceB;
+          } else {
+            return priceB - priceA;
+          }
+        }
+      } else {
+        if (order === "asc") {
+          return -1;
+        } else {
+          return 1;
+        }
+      }
+    });
+
+    setData(sortedData);
+  };
+
   const handleSearch = () => {
-    // useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM` +
-          `&maxResults=40`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${APIKEY}&maxResults=40`
       )
       .then((res) => {
         setData(res.data.items);
         setLoading(true);
       });
-    // }, []);
   };
 
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
-  const handlefavourite = () => {
-    {
-      favourite == true ? setFavourite(false) : setFavourite(true);
-    }
+
+  const handleFavourite = () => {
+    setFavourite(!favourite);
   };
 
   const h1ClassName = favourite
-    ? "text-xl font-bold p-5 m-5 bg-green-500 rounded-lg hover:bg-green-500"
-    : "text-xl font-bold p-5 m-5 bg-gray-500 rounded-lg hover:bg-green-500";
+    ? "text-xl font-bold p-5 m-5 bg-yellow-500 rounded-lg hover:bg-green-500"
+    : "text-xl font-bold p-5 m-5 bg-green-500 rounded-lg hover:bg-yellow-500";
+
+  const handleSortChange = (e) => {
+    const selectedSort = e.target.value;
+    const [newSortOrder, newSortCriterion] = selectedSort.split("-");
+
+    setSortOrder(newSortOrder);
+    setSortCriterion(newSortCriterion);
+    sortData(newSortOrder, newSortCriterion);
+  };
+
   return (
     <>
-      <div className="bg-slate-50 mt-5 flex justify-center h-[60px]">
-        <div className="flex w-[30%] m-1 justify-center">
+      <div className="bg-slate-300 pt-5 flex justify-center ">
+        <div className="flex w-[30%] my-5 mb-10 justify-center">
           <input
-            className="bg-gray-300 font-semibold text-xl w-[550px] rounded-tl-xl rounded-bl-xl  pl-5 focus:outline-none"
+            className="bg-slate-100 font-semibold text-xl w-[550px]   h-[52px]rounded-tr-xl rounded-bl-xl   pl-5 focus:outline-none"
             type="text"
             placeholder="Search here..."
             value={search}
             onChange={handleInputChange}
           />
-          <div className="items-center">
+          <div className="items-center bg-slate-300">
             <FcSearch
-              className="w-[35px] h-[52px]  bg-gray-300 rounded-r-xl"
+              className="w-[35px] h-[52px] pr-1 bg-slate-100 rounded-r-xl"
               onClick={handleSearch}
               style={{ cursor: "pointer" }}
             />
           </div>
         </div>
       </div>
-      <div
-        className="flex justify-center mt-10 cursor-pointer "
-        onClick={handlefavourite}
-      >
+      <hr />
+      <div className="flex justify-between px-5 cursor-pointer bg-slate-300">
         <Link to="/FavouriteBook ">
           <h1 className={h1ClassName}>Favourite book</h1>
         </Link>
+        {data.length > 0 && (
+          <div className="flex justify-between">
+            <label className="text-xl font-bold p-5 m-5">
+              Sort by:
+              <select
+                value={`${sortOrder}-${sortCriterion}`}
+                onChange={handleSortChange}
+                className="p-2 ml-2 bg-gray-100 border border-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-200"
+              >
+                <option value="asc-title">A - Z</option>
+                <option value="desc-title">Z - A</option>
+                <option value="asc-price">Price Low to High</option>
+                <option value="desc-price">Price High to Low</option>
+              </select>
+            </label>
+          </div>
+        )}
       </div>
-      <div className=" bg-slate-100 w-full mt-5">
+      <hr />
+      <div className="bg-slate-300 w-full pt-5">
         <div className="flex flex-wrap justify-center">
-          {loading == false ? <Intro /> : <BookCard books={data} />}
+          {loading === false ? <Intro /> : <BookCard books={data} />}
         </div>
       </div>
     </>

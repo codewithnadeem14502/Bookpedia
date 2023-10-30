@@ -6,7 +6,7 @@ const BackButton = () => {
 
   return (
     <>
-      <div className="hidden md:my-5 md:block">
+      <div className="hidden md:py-8 md:px-10 md:block">
         <button
           className="p-4 rounded-full  bg-gradient-to-r from-red-500 to-yellow-500 shadow-lg hover:from-red-600 hover:to-yellow-600 transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           onClick={() => {

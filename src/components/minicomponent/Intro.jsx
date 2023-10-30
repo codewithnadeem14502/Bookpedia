@@ -24,9 +24,11 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className="w-[80%]  md:w-full h-[500px] flex justify-center items-center text-center bg-slate-50">
-      <div className="flex justify-center items-center text-center border-solid border-4 border-black p-10 flex-col md:flex-row rounded-lg shadow-lg">
-        <h1 className="text-5xl font-Poppins font-bold mr-5">{text}</h1>
+    <div className="w-[80%]  md:w-full h-[500px] flex justify-center items-center text-center bg-slate-300 ">
+      <div className="flex justify-center items-center text-center border-solid border-4 border-black p-10 flex-col md:flex-row rounded-lg shadow-lg bg-slate-300">
+        <h2 className="text-5xl text-white font-Poppins font-bold mr-5">
+          {text}
+        </h2>
         <ImBooks className="animate__animated animate__bounceIn w-[150px] h-[150px] text-blue-500" />
       </div>
     </div>

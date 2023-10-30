@@ -1,3 +1,4 @@
+export const APIKEY = "AIzaSyCgpPa7Ctg2u1ldc7iInVH7Qq0TN7UmgmM";
 export const bestSellingBooksData = [
   {
     id: 1,

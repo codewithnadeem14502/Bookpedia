@@ -6,6 +6,7 @@ import { ImBin } from "react-icons/im";
 import EmptyCart from "../cart/EmptyCart";
 import clipboard from "clipboard-copy";
 import CopyToClipboardButton from "../Buttons/CopyToClipboardButton";
+import BackButton from "../Buttons/BackButton";
 const FavouriteBook = () => {
   const favitems = useSelector(getCart);
   const dispatch = useDispatch();
@@ -26,8 +27,8 @@ const FavouriteBook = () => {
     return <EmptyCart heading={heading} para={para} cat={cat} />;
 
   return (
-    <div>
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="bg-slate-100">
+      <div className="p-5 md:p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {uniqueBooks.map((book) => (
           <div
             key={book.id}
@@ -56,11 +57,8 @@ const FavouriteBook = () => {
           </div>
         ))}
       </div>
-      <Link to="/">
-        <button className="m-5 p-5 rounded-md bg-cyan-500 font-bold text-lg">
-          Go Back
-        </button>
-      </Link>
+
+      <BackButton />
     </div>
   );
 };
