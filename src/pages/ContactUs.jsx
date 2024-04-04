@@ -3,9 +3,34 @@ import { Transition } from "@headlessui/react";
 
 const ContactUs = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   const toggleForm = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Here you can perform any necessary actions with the form data
+    alert("Send successful");
+    // Clear input fields
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -28,51 +53,64 @@ const ContactUs = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-lg text-gray-700 font-bold mb-2 "
                   htmlFor="name"
                 >
                   Name
                 </label>
                 <input
-                  className="input"
+                  className="w-[80%] border border-gray-300 pl-4 py-4 rounded-lg"
                   id="name"
                   type="text"
                   placeholder="Enter your name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-4">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 text-lg "
                   htmlFor="email"
                 >
                   Email
                 </label>
                 <input
-                  className="input"
+                  className="w-[80%]  border border-gray-300 pl-4 py-4 rounded-lg"
                   id="email"
                   type="email"
                   placeholder="Enter your email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-6">
                 <label
-                  className="block text-gray-700 font-bold mb-2"
+                  className="block text-gray-700 font-bold mb-2 w-full text-lg"
                   htmlFor="message"
                 >
                   Message
                 </label>
                 <textarea
-                  className="input"
+                  className="w-[80%]  border pl-4 p-5 border-gray-300 rounded-lg"
                   id="message"
                   placeholder="Enter your message"
                   rows="6"
+                  style={{ width: "100%" }}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
               <div className="flex justify-end">
-                <button className="btn" type="button">
+                <button
+                  className="bg-blue-500 p-4 m-4 rounded-lg text-white font-semibold"
+                  type="submit"
+                >
                   Send
                 </button>
               </div>

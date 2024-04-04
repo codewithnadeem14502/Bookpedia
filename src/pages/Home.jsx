@@ -24,7 +24,7 @@ function Home() {
         <h1 className="text-4xl font-semibold text-yellow-500 mb-4 animate-pulse">
           Best Place to Find Books
         </h1>
-        <p className="text-lg mb-6 text-slate-100 animate-fade-in">
+        <p className="text-lg mb-6 text-white">
           Welcome to the world of literature and knowledge.
         </p>
 

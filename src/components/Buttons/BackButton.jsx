@@ -8,7 +8,7 @@ const BackButton = () => {
     <>
       <div className="hidden md:py-8 md:px-10 md:block">
         <button
-          className="p-4 rounded-full  bg-gradient-to-r from-red-500 to-yellow-500 shadow-lg hover:from-red-600 hover:to-yellow-600 transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          className="p-4 rounded-full bg-blue-400  shadow-lg hover:from-red-600 hover:to-yellow-600 transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
           onClick={() => {
             navigate(-1);
           }}
@@ -20,10 +20,11 @@ const BackButton = () => {
         </button>
       </div>
       <button
-        className="p-3 md:p-4 flex md:hidden items-center justify-center text-white bg-gradient-to-r from-red-500 to-yellow-500 rounded-full hover:from-red-600 hover:to-yellow-600 transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+        className="p-3 flex md:hidden items-center justify-center text-white bg-blue-500 rounded-full hover:from-red-600 hover:to-yellow-600 transform hover:scale-105 transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
         onClick={() => {
           navigate(-1);
         }}
+        style={{ width: "3rem", height: "3rem" }} // Set width and height to make it full circle
       >
         <AiOutlineArrowLeft className="w-6 h-6" />
       </button>

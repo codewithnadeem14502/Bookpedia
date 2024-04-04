@@ -9,7 +9,7 @@ const BestSelling = () => {
   return (
     <div className="p-4">
       <div className="flex justify-between md:flex">
-        <h1 className="text-4xl mt-5 ml-10 font-bold text-green-500 mb-6">
+        <h1 className="text-3xl mt-5 ml-5  font-bold text-black mb-5 md:text-4xl">
           Explore Our Best Sellers
         </h1>
 

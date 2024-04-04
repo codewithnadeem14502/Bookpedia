@@ -17,7 +17,7 @@ const Navbar = () => {
   const totalCartQuatity = useSelector(getTotalCartQuantity);
   return (
     <>
-      <div className="flex justify-between   h-[95px]">
+      <div className="flex justify-between bg-white  h-[95px]">
         <div className=" ">
           <Link to="/">
             <img
@@ -103,9 +103,9 @@ const Navbar = () => {
           </div>
           {menu == true && (
             <>
-              <div className="flex bg-red-500 justify-center absolute top-11 right-16 w-[270px] h-[300px] rounded-md ">
-                <ul className="text-white flex justify-evenly  flex-col text-center   ">
-                  <li className="font-bold text-xl hover:text-yellow-400">
+              <div className="flex bg-blue-500 z-20 justify-center absolute top-11 right-16 w-[220px] h-[300px] rounded-md ">
+                <ul className="text-white flex justify-evenly  flex-col text-center items-center  w-full ">
+                  <li className="font-bold text-xl hover:text-yellow-400 ">
                     <NavLink
                       to="/book"
                       className="focus:text-yellow-400 "
@@ -114,7 +114,7 @@ const Navbar = () => {
                       Home
                     </NavLink>
                   </li>
-                  <hr />
+                  <hr className="w-[80%] pr-5 items-center" />
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink
                       to="best-selling"
@@ -125,7 +125,7 @@ const Navbar = () => {
                       Best Seller
                     </NavLink>
                   </li>
-                  <hr />
+                  <hr className="w-[80%] pr-5 items-center" />
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink
                       to="about-us"
@@ -135,7 +135,7 @@ const Navbar = () => {
                       About Us
                     </NavLink>
                   </li>
-                  <hr className="w-full" />
+                  <hr className="w-[80%] pr-5 items-center" />
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink
                       to="cart"
@@ -150,7 +150,7 @@ const Navbar = () => {
                       )}
                     </NavLink>
                   </li>
-                  <hr className="w-full" />
+                  <hr className="w-[80%] pr-5 items-center" />
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink
                       to="profile"
@@ -160,7 +160,7 @@ const Navbar = () => {
                       Profile
                     </NavLink>
                   </li>
-                  <hr className="w-full" />
+                  <hr className="w-[80%] pr-5 items-center" />
                   <li className="font-medium text-xl hover:text-yellow-400">
                     <NavLink
                       to="contact"

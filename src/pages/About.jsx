@@ -32,7 +32,7 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen p-5">
+    <div className="bg-white min-h-screen p-5 px-10 ">
       <div className="container mx-auto py-8">
         <h1 className="text-3xl font-semibold mt-5 mb-4">About Us</h1>
         <p className="text-lg mb-4">
