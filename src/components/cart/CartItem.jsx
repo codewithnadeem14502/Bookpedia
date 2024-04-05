@@ -12,7 +12,9 @@ const CartItem = ({ item }) => {
           {quantity}&times; {title}
         </p>
         <div className="flex items-center justify-between sm:gap-6">
-          <p className="text-sm font-bold">{formatCurrency(amount)}</p>
+          <p className="text-sm font-bold">
+            {formatCurrency(Math.floor(amount))}
+          </p>
           <UpdateItemQuantity id={Bookid} currentQuantity={quantity} />
           <DeleteBtn Bookid={Bookid} /> *
         </div>

@@ -15,25 +15,31 @@ const BookCard = ({ books }) => {
           // console.log(indx);
           return (
             <Link to={indx.toString()} key={indx}>
-              <div className="p-5 mb-5 mr-1 ml-2 group relative transform transition-transform duration-300 hover:scale-105 ">
-                <div className="bg-gradient-to-br from-cyan-400 via-blue-400 to-indigo-400 w-[250px] h-[440px] rounded-xl shadow-lg border border-gray-300 overflow-hidden">
-                  <img
-                    className="w-[250px] h-[250px] rounded-tl-xl rounded-tr-xl transform transition-transform hover:scale-105"
-                    src={bookimage}
-                    alt="bookimage"
-                  />
-                  <div className="pt-2 px-5">
-                    <h1 className="font-medium text-lg text-white">{title}</h1>
-                    <div className="flex bg-black rounded-xl mt-3 p-2 justify-start items-center text-center content-center ">
+              <div className="p-5 mb-2 mr-1 ml-2 group relative transform transition-transform duration-300 hover:scale-105 ">
+                <div className="bg-white w-[250px] h-[350px] rounded-xl shadow-lg border  overflow-hidden border-black ">
+                  <div className=" bg-blue-500">
+                    <img
+                      className="w-full h-56 object-contain rounded-md p-4"
+                      style={{ transition: "transform 0.3s ease-in-out" }}
+                      src={bookimage}
+                      alt="bookimage"
+                    />
+                  </div>
+                  <hr className="border-1 border-black " />
+                  <div className="w-full flex  flex-col justify-center items-center text-center">
+                    <div className="pt-2 px-5">
+                      <h1 className="font-semibold text-lg text-black line-clamp-2">
+                        {title.length > 15
+                          ? `${title.substring(0, 15)}...`
+                          : title}
+                      </h1>
+                    </div>
+                    <div className="w-full flex bg-red-500 justify-center items-center mt-5 ">
                       <FaRupeeSign className="text-green-500" />
-
-                      <h2 className="font-bold text-sm mt-2 text-yellow-500 ml-2">
-                        {amount}
+                      <h2 className="font-bold text-lg text-white ml-2">
+                        {Math.floor(amount)}
                       </h2>
                     </div>
-                  </div>
-                  <div className="absolute inset-0  hover:opacity-1 group-hover:opacity-10 transition-opacity duration-300 rounded-xl">
-                    {/* Add overlay or hover content here */}
                   </div>
                 </div>
               </div>

@@ -85,23 +85,23 @@ const BookDetails = () => {
         title,
         amount,
         quantity: 1,
-        totalPrice: amount * 1,
+        totalPrice: Math.floor(amount),
       };
       dispatch(addItem(newItem));
     }
-
+    const plainTextDescription = description.replace(/<[^>]*>/g, "");
     return (
       <div key={bookid} className="">
-        <div className="bg-slate-200  w-full h-[auto] rounded-xl  flex justify-between flex-col lg:flex-row-reverse">
+        <div className="bg-slate-200  w-full h-[auto] rounded-xl  flex justify-around flex-col lg:flex-row-reverse">
           <div className="flex items-center justify-center flex-col">
             <img
-              className="w-[250px] h-[350px] md:w-[450px] md:h-[600px] rounded-xl m-10 border-2 border-yellow-400 shadow-lg"
+              className="w-[250px] h-[350px] md:w-[350px] md:h-[450px] rounded-xl  border border-black shadow-lg my-7 md:my-0"
               src={bookimage}
               alt="bookimage"
             />
             <div className="flex ">
               <h2 className="font-bold text-xl ml-12 mb-5 md:m-5 text-center">
-                &#8377;{amount}
+                &#8377;{Math.floor(amount)}
               </h2>
               <button
                 onClick={handleLike}
@@ -138,33 +138,42 @@ const BookDetails = () => {
               </span>
             )}
           </div>
-          <div className="mt-[55px]  text-start  w-full   rounded-lg lg:ml-10 lg:w-[50%] p-5 lg:p-0">
-            <h1 className="font-Poppins font-bold rounded-lg text-center bg-cyan-500 text-2xl md:text-4xl md:py-5 lg:text-5xl">
+          <div className="mt-5  text-start  w-full   rounded-lg lg:ml-10 lg:w-[50%] p-5 lg:p-0">
+            <h1 className="font-Poppins font-bold rounded-lg text-center text-blue-500  text-2xl md:text-3xl md:py-5 my-5 lg:text-5xl">
               {title}
             </h1>
-            <div className="flex justify-center flex-col md:flex-row">
-              <h3 className="mt-5  mr-5 font-medium md:mt-2">
-                Author by: {author}
+            <div className="flex flex-wrap justify-center  bg-yellow-500 rounded-md p-5 md:p-2">
+              <h3 className="font-medium ">
+                Author by: <span className="font-bold ">{author}</span>
               </h3>
-              <h3 className="mt-5  mr-5 font-medium md:mt-2">
-                PublishedDate : {publishedDate}
+              <h3 className="mx-5 font-medium ">
+                Published date :{" "}
+                <span className="font-bold">{publishedDate}</span>
               </h3>
-              <h3 className="mt-2 md-5 p-2 text-black font-medium  md:mt-2 md:mb-0 bg-yellow-500 rounded-lg text-center">
-                Total-Page : {pagecount}
+              <h3 className="font-medium ">
+                Total page : <span className="font-bold">{pagecount}</span>
               </h3>
             </div>
 
-            <div className=" mt-5 ">
-              <p className="p-4 h-auto font-Poppins font-medium text-start">
-                {description}
-                <span className="p-3 m-3  md:p-5 md:m-5  text-yellow-500 font-Poppins font-semibold text-xl text-center rounded-2xl ">
-                  <a href={infoLink} target="_blank" className="underline">
-                    More Info..
-                  </a>
-                </span>
+            <div className="mt-5 flex flex-wrap items-start bg-slate-200 py-4 rounded-lg shadow-lg">
+              <h1 className="font-bold text-xl ml-5">Book Summary</h1>
+              <p className="p-5 h-auto font-Poppins font-medium text-start overflow-hidden">
+                {plainTextDescription.length > 950 ? (
+                  <>
+                    {`${plainTextDescription.substring(0, 940)}...`}
+                    <a href={infoLink} target="_blank" className="underline">
+                      More Info.
+                    </a>
+                  </>
+                ) : (
+                  plainTextDescription
+                )}
               </p>
             </div>
-            <BackButton />
+            <div className="my-5">
+              {" "}
+              <BackButton />
+            </div>
           </div>
         </div>
       </div>

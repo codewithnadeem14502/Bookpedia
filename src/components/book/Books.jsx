@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookCard from "./BookCard";
-import Intro from "../minicomponent/Intro";
+import Loading from "../../components/book/Loading";
 import { FcSearch } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { APIKEY } from "../../context/BestSellingData";
@@ -13,6 +13,22 @@ const Books = () => {
   const [sortOrder, setSortOrder] = useState("asc");
   const [sortCriterion, setSortCriterion] = useState("title");
 
+  useEffect(() => {
+    // Fetch default list of books when component mounts
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=react&key=${APIKEY}&maxResults=10`
+      )
+      .then((res) => {
+        console.log("res ", res.data.items);
+        setData(res.data.items);
+        setLoading(true);
+      })
+      .catch((error) => {
+        console.error("Error fetching default books:", error);
+        setLoading(false);
+      });
+  }, []);
   const sortData = (order, sortBy) => {
     const sortedData = [...data];
 
@@ -83,29 +99,35 @@ const Books = () => {
     setSortCriterion(newSortCriterion);
     sortData(newSortOrder, newSortCriterion);
   };
-
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
   return (
     <>
-      <div className="bg-slate-300 pt-5 flex justify-center ">
-        <div className="flex w-[30%] my-5 mb-10 justify-center">
+      <div className="bg-slate-50 pt-5 flex justify-center">
+        <div className="flex w-[30%] my-5 mb-10 justify-center relative">
           <input
-            className="bg-slate-100 font-semibold text-xl w-[550px]   h-[52px]rounded-tr-xl rounded-bl-xl   pl-5 focus:outline-none"
+            className="bg-slate-200 font-semibold text-xl w-[550px] h-[52px] rounded-lg pl-5 pr-[50px] focus:outline-none text-black"
             type="text"
             placeholder="Search here..."
             value={search}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
-          <div className="items-center bg-slate-300">
+          <div className="absolute right-0 top-0 bottom-0 flex items-center pr-2">
             <FcSearch
-              className="w-[35px] h-[52px] pr-1 bg-slate-100 rounded-r-xl"
+              className="w-[35px] h-[35px]  rounded"
               onClick={handleSearch}
               style={{ cursor: "pointer" }}
             />
           </div>
         </div>
       </div>
-      <hr />
-      <div className="bg-slate-300 px-5 cursor-pointer">
+
+      <hr className="border-1 border-black " />
+      <div className="bg-slate-50 px-5 cursor-pointer">
         <div className="sm:flex sm:justify-between items-center">
           <div className="w-[90%] md:w-1/2 flex justify-center items-center">
             <Link to="/FavouriteBook">
@@ -134,10 +156,10 @@ const Books = () => {
         </div>
       </div>
 
-      <hr />
-      <div className="bg-slate-300 w-full pt-5">
+      <hr className="border-1 border-black " />
+      <div className="bg-slate-50 w-full pt-5">
         <div className="flex flex-wrap justify-center">
-          {loading === false ? <Intro /> : <BookCard books={data} />}
+          {loading === false ? <Loading /> : <BookCard books={data} />}
         </div>
       </div>
     </>

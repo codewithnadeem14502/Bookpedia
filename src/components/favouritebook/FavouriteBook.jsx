@@ -37,8 +37,9 @@ const FavouriteBook = () => {
             <img
               src={book.bookimage}
               alt={book.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-contain"
             />
+            <hr className="border-1 border-black my-5" />
             <div className="mt-4">
               <h2 className="text-xl font-semibold">{book.title}</h2>
               <p className="text-gray-500">{book.description}</p>

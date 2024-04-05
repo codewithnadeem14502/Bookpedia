@@ -12,7 +12,7 @@ const ThankYou = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div
-        className={` hover:bg-yellow-300 p-8 rounded-lg shadow-md 
+        className={` bg-yellow-300 p-8 rounded-lg shadow-md 
         `}
       >
         <h2 className="text-3xl font-semibold text-gray-800 mb-4">
