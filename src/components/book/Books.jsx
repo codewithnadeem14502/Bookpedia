@@ -116,7 +116,7 @@ const Books = () => {
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
           />
-          <div className="absolute right-0 top-0 bottom-0 flex items-center pr-2">
+          <div className="hidden md:flex absolute right-0 top-0 bottom-0  items-center pr-2">
             <FcSearch
               className="w-[35px] h-[35px]  rounded"
               onClick={handleSearch}
